@@ -1,8 +1,19 @@
 .game {
-  width: 100%;
+  width: 60%;
   height: 200px;
   border: 1px solid black;
   margin: auto;
+  background: white;
+}
+
+body {
+  /* background-image: url('img/bg.jpg'); */
+}
+
+.text-end {
+  color: white;
+  text-align: end;
+  padding-right: 230px;
 }
 
 #dino {
