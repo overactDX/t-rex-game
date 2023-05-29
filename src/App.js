@@ -15,7 +15,7 @@ const App = () => {
 
         setTimeout(function () {
           dino.classList.remove("jump");
-        }, 300);
+        }, 5000);
       }
     }
 
