@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useRef } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const dinoRef = useRef(null);
+  const cactusRef = useRef(null);
+
+  useEffect(() => {
+    const dino = dinoRef.current;
+    const cactus = cactusRef.current;
+
+    function jump() {
+      if (!dino.classList.contains("jump")) {
+        dino.classList.add("jump");
+
+        setTimeout(function () {
+          dino.classList.remove("jump");
+        }, 300);
+      }
+    }
+
+    let isAlive = setInterval(function () {
+      // get current dino Y position
+      let dinoTop = parseInt(
+        window.getComputedStyle(dino).getPropertyValue("top")
+      );
+
+      // get current cactus X position
+      let cactusLeft = parseInt(
+        window.getComputedStyle(cactus).getPropertyValue("left")
+      );
+
+      // detect collision
+      if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
+        // collision
+        clearInterval(isAlive);
+        alert("Game Over!");
+      }
+    }, 10);
+
+    document.addEventListener("keydown", function (event) {
+      jump();
+    });
+
+    return () => {
+      clearInterval(isAlive);
+      document.removeEventListener("keydown", function (event) {
+        jump();
+      });
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="game">
+      <div id="dino" ref={dinoRef}></div>
+      <div id="cactus" ref={cactusRef}></div>
     </div>
   );
-}
+};
 
 export default App;

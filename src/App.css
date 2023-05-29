@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+.game {
+  width: 600px;
+  height: 200px;
+  border: 1px solid black;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#dino {
+  width: 50px;
+  height: 50px;
+  background-image: url(https://raw.githubusercontent.com/mdbootstrap/knowledge-base/main/JS/games/dino-game/img/trex.png);
+  background-size: 50px 50px;
+  position: relative;
+  top: 150px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.jump {
+  animation: jump 0.3s linear;
+}
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+
+  30% {
+    top: 130px;
+  }
+
+  50% {
+    top: 80px;
+  }
+
+  80% {
+    top: 130px;
+  }
+
+  100% {
+    top: 150px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#cactus {
+  width: 20px;
+  height: 40px;
+  position: relative;
+  top: 110px;
+  left: 580px;
+
+  background-image: url("https://raw.githubusercontent.com/mdbootstrap/knowledge-base/main/JS/games/dino-game/img/cactus.png");
+  background-size: 20px 40px;
+
+  animation: block 1s infinite linear;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes block {
+  0% {
+    left: 580px;
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    left: -20px;
   }
 }
